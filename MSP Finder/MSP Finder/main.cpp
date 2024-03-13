@@ -118,13 +118,9 @@ public:
     set<vector<int>> getMST(int startV) //just here to compartmentalise everything a little more
     {
         getMSTInternal(startV);
-        
-        
-        
-        
-        
         return outputTree;
     }
+    
     
     
 };
@@ -139,7 +135,18 @@ int main(int argc, const char * argv[]) {
     g1.addEdge(0, 5);
     g1.addEdge(5, 3);
     g1.addEdge(2, 4);
-    g1.getMST(0);
+    
+    
+    set<vector<int>> MST = g1.getMST(0);
+    
+    cout << "Minimum spanning tree : \n";
+    for (vector<int> i : MST)
+    {
+        cout << i[0] << " -> " << i[1] << "\n";
+        
+    }
+    
+    
     
     
     return 0;
