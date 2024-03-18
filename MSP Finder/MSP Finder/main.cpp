@@ -80,15 +80,15 @@ private:
     void getMSTInternal(int startV) //recursive MST function
     {
         vector<int> connections = getConnectedVertices(startV);
-        
+
         
         for (int currentV : connections)
         {
             if (isVisited(currentV) == false)
             {
                 visitVertex(currentV, startV);
-                removeEdge(currentV, startV);
             }
+            removeEdge(currentV, startV);
         }
         
         for (int currentV : connections)
@@ -118,6 +118,7 @@ public:
     set<vector<int>> getMST(int startV) //just here to compartmentalise everything a little more
     {
         getMSTInternal(startV);
+        
         return outputTree;
     }
     
@@ -129,12 +130,24 @@ public:
 int main(int argc, const char * argv[]) {
     graph g1;
     
-    g1.setupGraph(6);
+    g1.setupGraph(10); //i think recursion error somewhere in here
     g1.addEdge(0, 1);
+    g1.addEdge(1, 2);
     g1.addEdge(0, 2);
     g1.addEdge(0, 5);
     g1.addEdge(5, 3);
     g1.addEdge(2, 4);
+    g1.addEdge(4, 5);
+    g1.addEdge(5, 6);
+    g1.addEdge(6, 7);
+    g1.addEdge(7, 0);
+    g1.addEdge(0, 5);
+    g1.addEdge(4, 8);
+    g1.addEdge(8, 9);
+    g1.addEdge(9, 2);
+    g1.addEdge(2, 8);
+    
+
     
     
     set<vector<int>> MST = g1.getMST(0);
